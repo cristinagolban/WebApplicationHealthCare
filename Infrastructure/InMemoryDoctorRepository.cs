@@ -51,6 +51,7 @@ namespace Infrastructure
                     return doctor.Appointments;
             }
 
+            return new List<Appointment>();
         }
 
         public Doctor GetDoctor(int Id)
