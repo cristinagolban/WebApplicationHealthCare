@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain
 {
-   public class Appointment : BaseEntity
+    public class Appointment : BaseEntity
     {
+        public int DoctorId { get; set; }
 
-        public Doctor Doctor;
+        public Doctor Doctor { get; set; }
 
-        public Patient Patient;
+        public int PatientId { get; set; }
+
+        public Patient Patient { get; set; }
 
         public DateTime DateTime { get; set; }
 
