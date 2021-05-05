@@ -1,7 +1,7 @@
 ﻿using Domain;
 using System.Collections.Generic;
 
-namespace Application
+namespace Application.Interfaces.Repository
 {
     public interface IRepository<T> where T : BaseEntity
     {

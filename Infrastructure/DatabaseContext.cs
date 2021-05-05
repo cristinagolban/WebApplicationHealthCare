@@ -5,11 +5,10 @@ namespace Infrastructure
 {
     public class DatabaseContext:DbContext
     {
-        private readonly string _connString;
-        public DatabaseContext(string connString):base()
-        {
-            _connString = connString;
+        string _connString = "Data Source=.;Initial Catalog=HealthCare;Integrated Security=True;";
 
+        public DatabaseContext():base()
+        {
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
