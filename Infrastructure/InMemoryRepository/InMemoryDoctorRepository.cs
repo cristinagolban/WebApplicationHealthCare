@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using AppliApplication.Interfaces.Repositorycation;
 
-namespace Infrastructure
+namespace Infrastructure.InMemoryRepository
 {
     public class InMemoryDoctorRepository : IDoctorRepository
     {
@@ -43,6 +44,11 @@ namespace Infrastructure
             };
         }
 
+        public IEnumerable<Doctor> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Appointment> GetAppointments(int Id)
         {
             foreach (var doctor in doctors)
@@ -52,6 +58,11 @@ namespace Infrastructure
             }
 
             return new List<Appointment>();
+        }
+
+        public Doctor GetById(int Id)
+        {
+            throw new NotImplementedException();
         }
 
         public Doctor GetDoctor(int Id)

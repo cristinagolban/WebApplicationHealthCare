@@ -8,6 +8,7 @@ namespace Domain
     {
         public string Name { get; set; }
         public string Ward { get; set; }
+
         public List<Appointment> Appointments { get; set; } = new List<Appointment>();
 
         public override string ToString()

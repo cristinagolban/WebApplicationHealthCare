@@ -1,9 +1,11 @@
 ﻿using Application;
+using Application.Interfaces.Repository;
 using Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Infrastructure
+namespace Infrastructure.InMemoryRepository
 {
     public class InMemoryAppointmentRepository : IAppointmentRepository
     {
@@ -40,6 +42,11 @@ namespace Infrastructure
             }
         }
 
+        public IEnumerable<Appointment> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Appointment GetAppointment(int Id)
         {
             return appointments.FirstOrDefault(a => a.Id == Id);
@@ -50,6 +57,14 @@ namespace Infrastructure
             return appointments;
         }
 
-       
+        public Appointment GetById(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Appointment> GetWithFilter(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

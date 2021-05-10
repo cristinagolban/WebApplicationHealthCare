@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Domain;
 
-namespace Application
+namespace ApApplication.Interfaces.Repositoryplication
 {
     public interface IPatientRepository
     {
-        void NewAppointment();
     }
 }
