@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using AppliApplication.Interfaces.Repositorycation;
+using System.Threading.Tasks;
 
 namespace Infrastructure.InMemoryRepository
 {
@@ -73,6 +74,16 @@ namespace Infrastructure.InMemoryRepository
         public IEnumerable<Doctor> GetDoctors()
         {
             return doctors;
+        }
+
+        Task<IEnumerable<Doctor>> IDoctorRepository.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Doctor> IDoctorRepository.GetById(int Id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

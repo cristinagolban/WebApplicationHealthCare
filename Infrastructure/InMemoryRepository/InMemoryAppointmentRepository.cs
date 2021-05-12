@@ -1,9 +1,11 @@
-﻿using Application;
+﻿using ApplicApplication.Interfaces.Repositoryation;
+using Application;
 using Application.Interfaces.Repository;
 using Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Infrastructure.InMemoryRepository
 {
@@ -42,6 +44,16 @@ namespace Infrastructure.InMemoryRepository
             }
         }
 
+        public Task<Appointment> AddEntity(Appointment obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Appointment> GetAll()
         {
             throw new NotImplementedException();
@@ -63,6 +75,26 @@ namespace Infrastructure.InMemoryRepository
         }
 
         public IEnumerable<Appointment> GetWithFilter(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Appointment>> GetWithFilter(Func<Appointment, bool> p)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Update(Appointment entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IEnumerable<Appointment>> IRepository<Appointment>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Appointment> IRepository<Appointment>.GetById(int id)
         {
             throw new NotImplementedException();
         }
