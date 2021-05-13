@@ -9,7 +9,11 @@ namespace Domain
         public string Name { get; set; }
         public string Ward { get; set; }
 
-        //public int Experience { get; set; }
+        public int Experience { get; set; }
+
+        public int DoctorAsistentId { get; set; }
+
+        public DoctorAsistent DoctorAsistent { get; set; }
 
         public List<Appointment> Appointments { get; set; } = new List<Appointment>();
 

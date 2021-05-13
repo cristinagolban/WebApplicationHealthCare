@@ -12,7 +12,7 @@ namespace Infrastructure.Repository
 {
     public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly DatabaseContext _context;
+        private readonly DatabaseContext _context = new DatabaseContext();
 
         private IQueryable<T> _entities;
 

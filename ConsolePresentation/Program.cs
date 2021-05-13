@@ -12,17 +12,18 @@ namespace ConsolePresentation
     {
         static void Main(string[] args)
         {
-            var connString = @"Server=RODSK41011\SQLEXPRESS;Database=HealthCare;Trusted_Connection=True";
             
             
-            using (var dbContext = new DatabaseContext(connString))
+            using (var dbContext = new DatabaseContext())
             {
                 dbContext.Database.EnsureCreated();
             
                 var doctorRepository = new DoctorRepository(dbContext);
                 var patientRepository = new PatientRepository(dbContext);
                 var appointmentRepository = new AppointmentRepository(dbContext);
+                var doctorasistentRepository = new DoctorAsistentRepository(dbContext);
                 /*
+                
                     doctorRepository.AddEntity(new Domain.Doctor
                     {
                         Name = "Dobrescu Dan",
@@ -105,88 +106,41 @@ namespace ConsolePresentation
 
 
 
-                    });*/
+                    });
                 appointmentRepository.Update(new Appointment
                 {
                     Id=5,
                     Description = "headache"
 
+                });*/
+                
+                doctorRepository.AddEntity(new Domain.Doctor
+                {
+                    Name = "Dimintrie Vladimir",
+                    Ward = "ORL",
+                    Experience=15,
+                    /*DoctorAsistent = new DoctorAsistent
+                    {
+                        Name = "doctor asist 1",
+                        Ward = "ORL",
+                        Experience=1,
+                        StillInCollage="yes"
+                    }*/
+                    
                 });
-               
-                appointmentRepository.SaveChanges();
+                
+
+                doctorRepository.SaveChanges();
+                //appointmentRepository.SaveChanges();
                 
                 // doctorRepository.Update(doctor1);
-                // doctorRepository.DeleteById(7);
+                 //doctorRepository.DeleteById(7);
             }
 
 
 
 
-            /*
-            using (var context = new DatabaseContext(connString))
-            {
-                using (var dbContextTransaction = context.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        context.Database.ExecuteSqlRaw("UPDATE [dbo].[Doctors] Set Ward = 'Card Test' Where Ward=@p0", "Cardiology");
-
-                        var query = context.Appointments
-                            .Include(a => a.Doctor)
-                           .Where(p => p.Doctor.Ward != String.Empty);
-
-                        foreach (var appointment in query)
-                        {
-                            appointment.Description += " Test";
-                        }
-
-                        context.SaveChanges();
-
-                        dbContextTransaction.Commit();
-                    }
-                    catch(Exception ex)
-                    {
-                        var exception = ex;
-
-                        dbContextTransaction.Rollback();
-                   }
-                }
-            }
-
-                using (var context = new DatabaseContext(connString))
-                {
-                    using (var dbContextTransaction = context.Database.BeginTransaction())
-                    {
-                        try
-                    {
-                        IQueryable<Appointment> appointments = context.Appointments;
-                        IQueryable<Doctor> doctors = context.Doctors;
-
-                        var innerJoinQuery = from a in appointments
-                                             join d in doctors
-                                             on a.DoctorId equals d.Id
-                                             select new { DoctorName = d.Name, AppointmentDescription = a.Description };
-
-                        var leftJoinQuery = from d in doctors
-                                            join a in appointments
-                                            on d.Id equals a.DoctorId into appointmentsAlias
-                                            from a in appointmentsAlias.DefaultIfEmpty()
-                                            select new { DoctorName = d.Name, AppointmentDescription = a.Description };
-
-                        var crossJoinQuery = from d in doctors
-                                             from a in appointments
-                                             select new { DoctorName = d.Name, AppointmentDescription = a.Description };
-
-                    }
-                    catch (Exception ex)
-                    {
-                        var exception = ex;
-
-                        dbContextTransaction.Rollback();
-                    }
-                }
-            }*/
-
+            
 
 
 
