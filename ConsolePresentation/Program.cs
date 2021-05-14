@@ -22,8 +22,8 @@ namespace ConsolePresentation
                 var patientRepository = new PatientRepository(dbContext);
                 var appointmentRepository = new AppointmentRepository(dbContext);
                 var doctorasistentRepository = new DoctorAsistentRepository(dbContext);
+
                 /*
-                
                     doctorRepository.AddEntity(new Domain.Doctor
                     {
                         Name = "Dobrescu Dan",
@@ -90,10 +90,7 @@ namespace ConsolePresentation
 
                     });
 
-                    doctorRepository.SaveChanges();
-                    patientRepository.SaveChanges();
-
-
+                
 
                     appointmentRepository.AddEntity(new Domain.Appointment
                     {
@@ -112,35 +109,32 @@ namespace ConsolePresentation
                     Id=5,
                     Description = "headache"
 
-                });*/
-                
-                doctorRepository.AddEntity(new Domain.Doctor
-                {
-                    Name = "Dimintrie Vladimir",
-                    Ward = "ORL",
-                    Experience=15,
-                    /*DoctorAsistent = new DoctorAsistent
+                });
+                */
+
+
+                doctorRepository.AddEntity(
+                    new DoctorAsistent
                     {
                         Name = "doctor asist 1",
                         Ward = "ORL",
-                        Experience=1,
-                        StillInCollage="yes"
-                    }*/
-                    
-                });
-                
+                        Experience = 1,
+                        StillInCollage = "yes"
+                    }
+
+                    );
 
                 doctorRepository.SaveChanges();
-                //appointmentRepository.SaveChanges();
-                
-                // doctorRepository.Update(doctor1);
-                 //doctorRepository.DeleteById(7);
+                appointmentRepository.SaveChanges();
+                patientRepository.SaveChanges();
+
+
             }
 
 
 
 
-            
+
 
 
 

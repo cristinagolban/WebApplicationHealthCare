@@ -11,10 +11,6 @@ namespace Domain
 
         public int Experience { get; set; }
 
-        public int DoctorAsistentId { get; set; }
-
-        public DoctorAsistent DoctorAsistent { get; set; }
-
         public List<Appointment> Appointments { get; set; } = new List<Appointment>();
 
         public override string ToString()

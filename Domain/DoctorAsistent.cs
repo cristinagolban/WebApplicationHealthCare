@@ -6,6 +6,6 @@ namespace Domain
 {
     public class DoctorAsistent : Doctor
     {
-        public string StillInCollage { get; set; }
+        public string?  StillInCollage { get; set; }
     }
 }
