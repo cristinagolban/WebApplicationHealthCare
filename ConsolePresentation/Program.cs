@@ -5,25 +5,26 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using Infrastructure.Repository;
+using System.Threading.Tasks;
 
 namespace ConsolePresentation
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             
             
             using (var dbContext = new DatabaseContext())
             {
-                dbContext.Database.EnsureCreated();
+                dbContext.Database.Migrate();
             
                 var doctorRepository = new DoctorRepository(dbContext);
                 var patientRepository = new PatientRepository(dbContext);
                 var appointmentRepository = new AppointmentRepository(dbContext);
                 var doctorasistentRepository = new DoctorAsistentRepository(dbContext);
-
                 /*
+                
                     doctorRepository.AddEntity(new Domain.Doctor
                     {
                         Name = "Dobrescu Dan",
@@ -88,32 +89,34 @@ namespace ConsolePresentation
                         Email = "d.daniel88@yahoo.com",
 
 
-                    });
+                    });*/
 
-                
+              
 
-                    appointmentRepository.AddEntity(new Domain.Appointment
+
+                    await appointmentRepository.AddEntity(new Domain.Appointment
                     {
-                        Doctor = doctorRepository.GetById(3),
-                        Patient = patientRepository.GetById(4),
-                        DoctorId = doctorRepository.GetById(3).Id,
-                        PatientId = patientRepository.GetById(4).Id,
+                        Doctor = await doctorRepository.GetById(3),
+                        Patient = await patientRepository.GetById(4),
+                        DoctorId = (await doctorRepository.GetById(3)).Id,
+                        PatientId = (await patientRepository.GetById(4)).Id,
                         DateTime = new System.DateTime(2021, 10, 02),
                         Description = "voice loss"
 
 
 
                     });
-                appointmentRepository.Update(new Appointment
+                
+                await appointmentRepository.Update(new Appointment
                 {
                     Id=5,
                     Description = "headache"
 
                 });
-                */
+                
 
 
-                doctorRepository.AddEntity(
+               await  doctorRepository.AddEntity(
                     new DoctorAsistent
                     {
                         Name = "doctor asist 1",
