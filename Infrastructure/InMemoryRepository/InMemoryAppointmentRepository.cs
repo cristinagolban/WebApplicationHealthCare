@@ -84,6 +84,11 @@ namespace Infrastructure.InMemoryRepository
             throw new NotImplementedException();
         }
 
+        public void SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task Update(Appointment entity)
         {
             throw new NotImplementedException();
@@ -95,6 +100,11 @@ namespace Infrastructure.InMemoryRepository
         }
 
         Task<Appointment> IRepository<Appointment>.GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IRepository<Appointment>.SaveChangesAsync()
         {
             throw new NotImplementedException();
         }

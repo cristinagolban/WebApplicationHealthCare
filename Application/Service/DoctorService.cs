@@ -1,28 +1,67 @@
 ﻿using AppliApplication.Interfaces.Repositorycation;
-using Application.Interfaces.Repository;
+using Application.Dtos;
 using Application.Interfaces.Service;
+using AutoMapper;
 using Domain;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Application.Service
 {
     public class DoctorService : IDoctorService
     {
-        public IDoctorRepository _doctorRepository { get; set; }
-        public IAppointmentRepository _appointmentRepository { get; set; }
+        private readonly IMapper _mapper;
+        private readonly IDoctorRepository _doctorRepository;
 
-
-        public DoctorService(IDoctorRepository doctorRepository, IAppointmentRepository appointmentRepository)
+        public DoctorService(IDoctorRepository doctorRepository,
+            IMapper mapper)
         {
+            _mapper = mapper;
             _doctorRepository = doctorRepository;
-            _appointmentRepository = appointmentRepository;
         }
-        public  async Task<IEnumerable<Doctor>> GetAllAvaibleDoctors()
+
+        public async Task<DoctorDto> CreateDoctor(CreateDoctorDto createDoctorDto)
         {
-             return await _doctorRepository.GetAll();
+            var doctor = _mapper.Map<Doctor>(createDoctorDto);
+
+            var createdDoctor = await _doctorRepository.AddEntity(doctor);
+            await _doctorRepository.SaveChangesAsync();
+
+            var doctorDto = _mapper.Map<DoctorDto>(createdDoctor);
+
+            return doctorDto;
         }
+
+        public async Task DeleteDoctor(int id)
+        {
+            await _doctorRepository.DeleteById(id);
+            await _doctorRepository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<DoctorDto>> GetAll()
+        {
+            var doctorsDto = (await _doctorRepository.GetAll())
+                .Select(d => _mapper.Map<DoctorDto>(d));
+
+            return doctorsDto;
+        }
+
+        public async Task<Doctor> GetDoctorById(int id)
+        {
+            return await _doctorRepository.GetById(id);
+        }
+       
+        public async Task UpdateDoctor(Doctor doctor)
+        {
+            await _doctorRepository.Update(doctor);
+            await _doctorRepository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Doctor>> GetDoctorsByExperience(int experience)
+        {
+            return await _doctorRepository.GetWithFilter(d => d.Experience == experience);
+        }
+
     }
 }

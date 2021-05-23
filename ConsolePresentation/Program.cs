@@ -127,9 +127,9 @@ namespace ConsolePresentation
 
                     );
 
-                doctorRepository.SaveChanges();
-                appointmentRepository.SaveChanges();
-                patientRepository.SaveChanges();
+                await doctorRepository.SaveChangesAsync();
+                await appointmentRepository.SaveChangesAsync();
+                await patientRepository.SaveChangesAsync();
 
 
             }

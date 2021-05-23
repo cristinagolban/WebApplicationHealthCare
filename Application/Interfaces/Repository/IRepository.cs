@@ -14,5 +14,6 @@ namespace ApplicApplication.Interfaces.Repositoryation
         Task Update(T entity);
         Task<IEnumerable<T>> GetWithFilter(Func<T, bool> p);
 
+        Task SaveChangesAsync();
     }
 }

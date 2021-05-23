@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using AppliApplication.Interfaces.Repositorycation;
 using System.Threading.Tasks;
+using ApplicApplication.Interfaces.Repositoryation;
 
 namespace Infrastructure.InMemoryRepository
 {
@@ -45,6 +46,16 @@ namespace Infrastructure.InMemoryRepository
             };
         }
 
+        public Task<Doctor> AddEntity(Doctor obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Doctor> GetAll()
         {
             throw new NotImplementedException();
@@ -76,12 +87,32 @@ namespace Infrastructure.InMemoryRepository
             return doctors;
         }
 
-        Task<IEnumerable<Doctor>> IDoctorRepository.GetAll()
+        public Task<IEnumerable<Doctor>> GetWithFilter(Func<Doctor, bool> p)
         {
             throw new NotImplementedException();
         }
 
-        Task<Doctor> IDoctorRepository.GetById(int Id)
+        public void SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Update(Doctor entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IEnumerable<Doctor>> IRepository<Doctor>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Doctor> IRepository<Doctor>.GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IRepository<Doctor>.SaveChangesAsync()
         {
             throw new NotImplementedException();
         }

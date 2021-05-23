@@ -24,44 +24,42 @@ namespace Infrastructure.Repository
 
         public virtual async Task<T> AddEntity(T obj)
         {
-            _context.Add(obj);
+            await _context.AddAsync(obj);
             return obj;
         }
 
         public virtual async Task DeleteById(int id)
         {
-            var objToDelete = _entities.FirstOrDefault(o => o.Id == id);
-            if (objToDelete != null)
-            {
-                _context.Remove(objToDelete);
-            }
+            var objToDelete = await _entities.FirstAsync(o => o.Id == id);
+            _context.Remove(objToDelete);
         }
 
         public virtual async Task<IEnumerable<T>> GetAll()
         {
-            return  _entities;
+            return await _entities.ToListAsync();
         }
 
         public virtual async Task<T> GetById(int id)
         {
-            var obj = ((DbSet<T>)_entities).Find(id);
+            var obj = await ((DbSet<T>)_entities).FindAsync(id);
             return  obj;
         }
 
         public virtual async Task Update(T entity)
         {
-            var objToUpdate = _entities.FirstOrDefault(e => e.Id == entity.Id);
-            objToUpdate = entity;
+            //var objToUpdate = await _entities.FirstOrDefaultAsync(e => e.Id == entity.Id);
+            //objToUpdate = entity;
+
+            _context.Attach(entity);
+            var entry = _context.Entry(entity);
+            entry.State = EntityState.Modified;
         }
 
-      
-
-        public void SaveChanges() => _context.SaveChanges();
+        public Task SaveChangesAsync() => _context.SaveChangesAsync();
 
         public async Task<IEnumerable<T>> GetWithFilter(Func<T, bool> p)
         {
-            return  _context.Set<T>().Where(p);
-
+            return _context.Set<T>().Where(p);
         }
     }
 }

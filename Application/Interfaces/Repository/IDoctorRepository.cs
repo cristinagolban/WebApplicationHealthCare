@@ -1,16 +1,9 @@
-﻿using Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ApplicApplication.Interfaces.Repositoryation;
+using Domain;
 
 namespace AppliApplication.Interfaces.Repositorycation
 {
-    public interface IDoctorRepository
+    public interface IDoctorRepository : IRepository<Doctor>
     {
-        Task<IEnumerable<Doctor>> GetAll();
-
-        Task<Doctor> GetById(int Id);
-
     }
 }
