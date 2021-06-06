@@ -72,5 +72,13 @@ namespace Application.Service
             return doctors;
         }
 
+        public async Task<IEnumerable<DoctorDto>> GetDoctorsByWard(int wardId)
+        {
+            var doctors = (await _doctorRepository.GetWithFilter
+               (d => d.WardId == wardId))
+               .Select(d => _mapper.Map<DoctorDto>(d));
+
+            return doctors;
+        }
     }
 }

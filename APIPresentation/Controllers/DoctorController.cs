@@ -81,5 +81,14 @@ namespace APIPresentation.Controllers
 
             return Ok(doctors);
         }
+
+        [HttpGet]
+        [Route("ward/{wardId}")]
+        public async Task<IActionResult> GetDoctorsByWard(int wardId)
+        {
+            var doctors = await _doctorService.GetDoctorsByWard(wardId);
+
+            return Ok(doctors);
+        }
     }
 }

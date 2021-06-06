@@ -7,9 +7,12 @@ namespace Domain
     public class Doctor : BaseEntity
     {
         public string Name { get; set; }
-        public string Ward { get; set; }
 
         public int Experience { get; set; }
+
+        public int WardId { get; set; }
+
+        public Ward Ward { get; set; }
 
         public List<Appointment> Appointments { get; set; } = new List<Appointment>();
 

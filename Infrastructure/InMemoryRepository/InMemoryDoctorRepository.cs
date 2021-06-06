@@ -18,31 +18,31 @@ namespace Infrastructure.InMemoryRepository
         {
             this.doctors = new List<Doctor>
             {
-                new Doctor
-                {
-                    Id = 001,
-                    Name = "Dragan Ion",
-                    Ward = "ORL"
-                },
+                //new Doctor
+                //{
+                //    Id = 001,
+                //    Name = "Dragan Ion",
+                //    Ward = "ORL"
+                //},
 
-                 new Doctor
-                {
-                    Id = 002,
-                    Name = "Miron Flavia",
-                    Ward = "CARDIOLOGY"
-                },
-                  new Doctor
-                {
-                    Id = 003,
-                    Name = "Draghici Dan",
-                    Ward = "ORL"
-                },
-                   new Doctor
-                {
-                    Id = 004,
-                    Name = "Dumitru Mirela",
-                    Ward = "GENERAL"
-                }
+                // new Doctor
+                //{
+                //    Id = 002,
+                //    Name = "Miron Flavia",
+                //    Ward = "CARDIOLOGY"
+                //},
+                //  new Doctor
+                //{
+                //    Id = 003,
+                //    Name = "Draghici Dan",
+                //    Ward = "ORL"
+                //},
+                //   new Doctor
+                //{
+                //    Id = 004,
+                //    Name = "Dumitru Mirela",
+                //    Ward = "GENERAL"
+                //}
             };
         }
 

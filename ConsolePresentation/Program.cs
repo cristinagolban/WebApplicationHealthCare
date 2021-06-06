@@ -94,42 +94,42 @@ namespace ConsolePresentation
               
 
 
-                    await appointmentRepository.AddEntity(new Domain.Appointment
-                    {
-                        Doctor = await doctorRepository.GetById(3),
-                        Patient = await patientRepository.GetById(4),
-                        DoctorId = (await doctorRepository.GetById(3)).Id,
-                        PatientId = (await patientRepository.GetById(4)).Id,
-                        DateTime = new System.DateTime(2021, 10, 02),
-                        Description = "voice loss"
+               //     await appointmentRepository.AddEntity(new Domain.Appointment
+               //     {
+               //         Doctor = await doctorRepository.GetById(3),
+               //         Patient = await patientRepository.GetById(4),
+               //         DoctorId = (await doctorRepository.GetById(3)).Id,
+               //         PatientId = (await patientRepository.GetById(4)).Id,
+               //         DateTime = new System.DateTime(2021, 10, 02),
+               //         Description = "voice loss"
 
 
 
-                    });
+               //     });
                 
-                await appointmentRepository.Update(new Appointment
-                {
-                    Id=5,
-                    Description = "headache"
+               // await appointmentRepository.Update(new Appointment
+               // {
+               //     Id=5,
+               //     Description = "headache"
 
-                });
+               // });
                 
 
 
-               await  doctorRepository.AddEntity(
-                    new DoctorAsistent
-                    {
-                        Name = "doctor asist 1",
-                        Ward = "ORL",
-                        Experience = 1,
-                        StillInCollage = "yes"
-                    }
+               //await  doctorRepository.AddEntity(
+               //     new DoctorAsistent
+               //     {
+               //         Name = "doctor asist 1",
+               //         Ward = "ORL",
+               //         Experience = 1,
+               //         StillInCollage = "yes"
+               //     }
 
-                    );
+               //     );
 
-                await doctorRepository.SaveChangesAsync();
-                await appointmentRepository.SaveChangesAsync();
-                await patientRepository.SaveChangesAsync();
+               // await doctorRepository.SaveChangesAsync();
+               // await appointmentRepository.SaveChangesAsync();
+               // await patientRepository.SaveChangesAsync();
 
 
             }

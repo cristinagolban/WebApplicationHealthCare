@@ -18,5 +18,7 @@ namespace Application.Interfaces.Service
         Task UpdateDoctor(Doctor doctor);
 
         Task<IEnumerable<DoctorDto>> GetDoctorsByExperience(int experience);
+
+        Task<IEnumerable<DoctorDto>> GetDoctorsByWard(int experience);
     }
 }
