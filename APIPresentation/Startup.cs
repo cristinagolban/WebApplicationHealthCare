@@ -1,21 +1,16 @@
+using ApApplication.Interfaces.Repositoryplication;
 using AppliApplication.Interfaces.Repositorycation;
 using Application;
+using Application.Interfaces.Repositoryplication;
 using Application.Interfaces.Service;
 using Application.Service;
 using Infrastructure;
 using Infrastructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace APIPresentation
 {
@@ -42,6 +37,11 @@ namespace APIPresentation
             services.AddScoped<IDoctorService, DoctorService>();
             services.AddScoped<IDoctorRepository, DoctorRepository>();
 
+            services.AddScoped<IPatientService, PatientService>();
+            services.AddScoped<IPatientRepository, PatientRepository>();
+
+            services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +67,11 @@ namespace APIPresentation
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(options => options.WithOrigins("https://localhost:44346")
+                                                     .AllowAnyMethod()
+                                                     .AllowAnyHeader()
+                                                     .AllowAnyOrigin());
 
             app.UseEndpoints(endpoints =>
             {

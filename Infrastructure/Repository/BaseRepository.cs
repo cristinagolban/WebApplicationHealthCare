@@ -1,6 +1,5 @@
 ﻿using ApplicApplication.Interfaces.Repositoryation;
 using Application;
-using Application.Interfaces.Repository;
 using Domain;
 using Microsoft.EntityFrameworkCore;
 using System;

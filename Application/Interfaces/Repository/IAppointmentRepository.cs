@@ -3,7 +3,7 @@ using Domain;
 using System;
 using System.Collections.Generic;
 
-namespace Application.Interfaces.Repository
+namespace Application.Interfaces.Repositoryplication
 {
     public interface IAppointmentRepository : IRepository<Appointment>
     {

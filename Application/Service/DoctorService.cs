@@ -47,9 +47,13 @@ namespace Application.Service
             return doctorsDto;
         }
 
-        public async Task<Doctor> GetDoctorById(int id)
+        public async Task<DoctorDto> GetDoctorById(int id)
         {
-            return await _doctorRepository.GetById(id);
+
+            var doctor = (await _doctorRepository.GetById(id));
+            var doctorsDto = _mapper.Map<DoctorDto>(doctor);
+
+            return doctorsDto;
         }
        
         public async Task UpdateDoctor(Doctor doctor)
@@ -58,9 +62,14 @@ namespace Application.Service
             await _doctorRepository.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Doctor>> GetDoctorsByExperience(int experience)
+        public async Task<IEnumerable<DoctorDto>> GetDoctorsByExperience(int experience)
         {
-            return await _doctorRepository.GetWithFilter(d => d.Experience == experience);
+            var doctors = (await _doctorRepository.GetWithFilter
+                (d => d.Experience >= experience))
+                .Select(d => _mapper.Map<DoctorDto>(d));
+
+
+            return doctors;
         }
 
     }

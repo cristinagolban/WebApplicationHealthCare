@@ -1,6 +1,5 @@
 ﻿using ApplicApplication.Interfaces.Repositoryation;
 using Application;
-using Application.Interfaces.Repository;
 using Domain;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.InMemoryRepository
 {
-    public class InMemoryAppointmentRepository : IAppointmentRepository
+    public class InMemoryAppointmentRepository : Application.Interfaces.Repositoryplication.IAppointmentRepository
     {
         private List<Appointment> appointments;
         public InMemoryAppointmentRepository()

@@ -1,9 +1,7 @@
-﻿using Application.Interfaces.Repository;
+﻿using Application.Interfaces.Repositoryplication;
 using Application.Interfaces.Service;
 using Domain;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Service
@@ -23,7 +21,7 @@ namespace Application.Service
 
         public async Task DeleteById(int id)
         {
-             _appointmentRepository = (IAppointmentRepository)_appointmentRepository.DeleteById(id);
+            _appointmentRepository = (IAppointmentRepository)_appointmentRepository.DeleteById(id);
         }
 
         public async Task<IEnumerable<Appointment>> GetAppointmentsForPatient(int id)

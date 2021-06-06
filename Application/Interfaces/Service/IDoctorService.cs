@@ -11,12 +11,12 @@ namespace Application.Interfaces.Service
 
         Task<IEnumerable<DoctorDto>> GetAll();
 
-        Task<Doctor> GetDoctorById(int id);
+        Task<DoctorDto> GetDoctorById(int id);
 
         Task DeleteDoctor(int id);
 
         Task UpdateDoctor(Doctor doctor);
 
-        Task<IEnumerable<Doctor>> GetDoctorsByExperience(int experience);
+        Task<IEnumerable<DoctorDto>> GetDoctorsByExperience(int experience);
     }
 }
